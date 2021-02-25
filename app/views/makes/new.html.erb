@@ -19,7 +19,7 @@
     <hr>
     <%= f.fields_for :cars do |c| %>
         <%= c.label :color %>
-        <%= c.color_field :color %><br>
+        <%= c.text_field :color %><br>
         <%= c.label :price %>
         <%= c.number_field :price, min: 0, step: 0.01 %><br>
         <%= c.label :four_wheel_drive %>

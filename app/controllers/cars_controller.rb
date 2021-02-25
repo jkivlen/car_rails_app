@@ -39,7 +39,7 @@ class CarsController < ApplicationController
   end
 
   def update
-    @car.update(car_params[:id])
+    @car.update(car_params)
     redirect_to car_path(@car)
   end
 
@@ -55,7 +55,7 @@ class CarsController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(:price, :color, :four_wheel_drive, :make_id, make_attributes: [:name])
+    params.require(:car).permit(:price, :color, :four_wheel_drive, :user_id, :make_id, make_attributes: [:name])
   end
 
   def redirect_if_not_owner

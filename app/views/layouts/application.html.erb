@@ -15,6 +15,9 @@
   <%= link_to("Cars", cars_path)%>
   <%= link_to("Make A Car", new_car_path) %>
   <%= link_to("Expensive Car", expensive_car_path)%>
+  <%= link_to("Sign Up", signup_path)%>
+  <%= link_to("Log In", login_path)%>
+  <%= link_to("Log Out", '/logout', method: 'delete')%>
   <%= button_to("Log In With Google", '/auth/google_oauth2') %>
 
 
