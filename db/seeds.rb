@@ -8,7 +8,7 @@
 
 
 jim = User.create(username: "jim", email: "jim@yahoo.com", password: "password")
-mike = User.creaet(username: "mike", email: "mike@yahoo.com", password: "password")
+mike = User.create(username: "mike", email: "mike@yahoo.com", password: "password")
 
 toyota = Make.create(name: "Toyota")
 honda= Make.create(name: "Honda")
@@ -18,4 +18,4 @@ jim.cars.create(color: "red", price: 20000.00, four_wheel_drive: false, make_id:
 jim.cars.create(color: "white", price: 16000.00, four_wheel_drive: false, make_id: honda.id)
 
 mike.cars.create(color: "black", price: 40000.00, four_wheel_drive: true, make_id: ford.id)
-mike.cars.create(color: "silver", price: 30000.00, four_wheel_drive: false, make_id honda.id)
+mike.cars.create(color: "silver", price: 30000.00, four_wheel_drive: false, make_id: honda.id)

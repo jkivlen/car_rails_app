@@ -1,0 +1,22 @@
+<% if @car.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved: </h2>
+
+        <ul>
+            <% @car.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+                <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<%= form_for([@make, @car]) do |f| %>
+    <%= display_make_fields(@make, f) %><br>
+    <%= f.label :color %>
+    <%= f.color_field :color %><br>
+    <%= f.label :price %>
+    <%= f.number_field :price, min: 0, step: 0.01 %><br>
+    <%= f.label :four_wheel_drive %>
+    <%= f.check_box :four_wheel_drive %>
+    <%= f.submit %>
+<% end %>

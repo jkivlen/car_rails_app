@@ -1,0 +1,5 @@
+<%= f.label :make %>
+    <%= f.fields_for :make do |m|%>
+        <%= m.label :name %>
+        <%= m.text_field :name %>
+    <% end %> 

@@ -1,2 +1,30 @@
 <h1>Makes#new</h1>
 <p>Find me in app/views/makes/new.html.erb</p>
+
+<% if @make.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= pluralize(@make.errors.count, "error") %> prohibited this make from being saved: </h2>
+
+        <ul>
+            <% @make.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+                <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<%= form_for(@make) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <hr>
+    <%= f.fields_for :cars do |c| %>
+        <%= c.label :color %>
+        <%= c.color_field :color %><br>
+        <%= c.label :price %>
+        <%= c.number_field :price, min: 0, step: 0.01 %><br>
+        <%= c.label :four_wheel_drive %>
+        <%= c.check_box :four_wheel_drive %><br>
+    <% end %>
+    <hr>
+    <%= f.submit %>
+<% end %>

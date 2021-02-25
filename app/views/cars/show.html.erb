@@ -1,2 +1,12 @@
 <h1>Cars#show</h1>
 <p>Find me in app/views/cars/show.html.erb</p>
+
+Name: <%= @car.make.name %><br>
+Price: <%= @car.display_price %> <br>
+Color: <%= @car.color %> <br>
+<%= display_four_wheel_drive(@car) %>
+
+
+
+<%= link_to("Edit Car", edit_car_path(@car)) %>
+<%= link_to("Delete Car", car_path(@car), method: 'delete') %>
