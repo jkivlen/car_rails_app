@@ -11,9 +11,17 @@
   </head>
 
   <body>
-  
+
 
   <%= button_to("Log In With Google", '/auth/google_oauth2') %>
+
+
+  <hr>
+
+  <% if flash[:message] %>
+      <div class="field_with_errors"><%= flash[:message] %></div>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>
