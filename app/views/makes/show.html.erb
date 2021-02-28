@@ -1,7 +1,6 @@
-<h1>Makes#show</h1>
-<p>Find me in app/views/makes/show.html.erb</p>
+<h1><%= "#{@make.name.capitalize}'s"%> </h1>
 
-Make's car's
+
 <%= render @make.cars %>
 
 <%= link_to("Make a new #{@make.name}", new_make_car_path(@make.id)) %>

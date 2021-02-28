@@ -1,5 +1,7 @@
 class CarsController < ApplicationController
   before_action :set_car, :redirect_if_not_owner, only: [:show, :edit, :update, :destroy]
+  before_action :current_user_exists, only: [:create]
+
 
   def new
     if params[:make_id] && @make = Make.find_by_id(params[:make_id])
@@ -13,7 +15,6 @@ class CarsController < ApplicationController
   end
 
   def create
-    # @car = Car.new(car_params)
     @car = current_user.cars.build(car_params)
     if @car.save
       redirect_to car_path(@car)
@@ -60,11 +61,21 @@ class CarsController < ApplicationController
 
   def redirect_if_not_owner
     if current_user != @car.user
-      redirect_to user_path(current_user), alert: "Not your car"
+      flash[:message] = "This is not your car.  You can only edit your own cars."
+      redirect_to cars_path
     end
   end
 
   def set_car
     @car = Car.find(params[:id])
+  end
+
+  def current_user_exists
+    if current_user
+      current_user
+    else
+      flash[:message] = "Need to be logged in to add cars. Please log in"
+      redirect_to '/login'
+    end
   end
 end

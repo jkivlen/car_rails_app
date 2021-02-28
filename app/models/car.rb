@@ -16,7 +16,11 @@ class Car < ApplicationRecord
         "#{self.make.name} - #{self.color}"
     end
 
-    def display_price #just use number_to_currency instead
+    def make_color_and_price
+        "#{self.make.name} - #{self.color}-" "#{self.display_price}"
+    end
+
+    def display_price 
         split_price = self.price.to_s.split(".")
         if split_price[1].length == 1
             split_price[1] << "0"
