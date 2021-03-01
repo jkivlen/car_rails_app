@@ -1,16 +1,5 @@
 <h1><%= "Edit Your #{@car.make.name}"%></h1>
 
 
+<%= render 'form' %>
 
-
-<%= form_for(@car) do |f| %>
-    <%= f.label :make %>
-    <%= f.text_field :make %><br>
-    <%= f.label :color %>
-    <%= f.text_field :color %><br>
-    <%= f.label :price %>
-    <%= f.number_field :price, min: 0, step: 0.01 %><br>
-    <%= f.label :four_wheel_drive %>
-    <%= f.check_box :four_wheel_drive %>
-    <%= f.submit %>
-<% end %>
