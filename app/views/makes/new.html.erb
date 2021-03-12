@@ -15,6 +15,14 @@
 <%= form_for(@make) do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %><br>
+    <%= f.submit %><br><br>
+<% end %>
+
+<h1>Make a Car</h1>
+
+<%= form_for(@make) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
     <%= f.fields_for :cars do |c| %>
         <%= c.label :color %>
         <%= c.text_field :color %><br>

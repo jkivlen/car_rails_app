@@ -13,7 +13,7 @@ class Car < ApplicationRecord
     end
 
     def make_and_color
-        "#{self.make.name} - #{self.color}"
+        "#{self.make.try(:name)} - #{self.color}"
     end
 
     def make_color_and_price
