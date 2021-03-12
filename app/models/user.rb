@@ -4,6 +4,10 @@ class User < ApplicationRecord
     has_many :cars
     has_many :makes, through: :cars
 
+    validates :username, :email, presence: true
+    validates :username, uniqueness: true 
+
+
     def self.create_from_omniauth(auth)
         User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
             u.username = auth['info']['name']
