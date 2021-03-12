@@ -7,6 +7,7 @@ class Car < ApplicationRecord
     validates :price, numericality: { greater_than: 0 }
     validates :make, uniqueness: {scope: :color, message: "with that color has already been added"}
 
+    scope :ordered_by_price, -> {order(price: :desc)}
 
     def make_attributes=(attr)
         self.make = Make.find_or_create_by(name: attr[:name])
@@ -31,8 +32,25 @@ class Car < ApplicationRecord
         "$#{display}"
     end
 
-    def self.ordered_by_price
-        self.order(price: :desc)
-
-    end
+    
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def self.ordered_by_price
+    #     self.order(price: :desc)
+
+    # end

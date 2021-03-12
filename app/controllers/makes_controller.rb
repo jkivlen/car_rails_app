@@ -7,7 +7,7 @@ class MakesController < ApplicationController
   def create
     @make = Make.new(make_params)
     if @make.save
-      redirect_to make_path(@make)
+      redirect_to make_cars_path(@make)
     else
       render :new
     end

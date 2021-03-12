@@ -2,7 +2,7 @@
 
 <ul>
 <% @makes.each do |make| %>
-    <li><%= link_to(make.name, make_path(make.id)) %><li>
+    <li><%= link_to(make.name, make_cars_path(make.id)) %><li>
 <% end %>
 </ul>
 
