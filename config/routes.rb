@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root 'sessions#welcome'
+  get '/search', to: 'cars#search', as: 'search'
+  # post '/search', to: 'cars#search'
 
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
 

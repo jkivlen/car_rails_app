@@ -1,0 +1,7 @@
+<h1> Search Results </h1>
+
+<ul>
+<% @cars.each do |car| %>
+    <li><%= link_to(car.make_color_and_price , car_path(car.id)) %><li>
+<% end %>
+</ul>

@@ -16,6 +16,7 @@ class CarsController < ApplicationController
 
   def create
     @car = current_user.cars.build(car_params)
+    binding.pry
     if @car.save
       redirect_to car_path(@car)
     else
@@ -52,6 +53,16 @@ class CarsController < ApplicationController
   def expensive
     @car = Car.ordered_by_price.first
   end
+
+  def search
+    if params[:search].blank?
+      @cars = Car.all
+    else
+      @cars = Car.joins(:make).search(params[:search])
+       @cars
+    end
+  end
+
   
   private
 

@@ -13,6 +13,16 @@ class Car < ApplicationRecord
         self.make = Make.find_or_create_by(name: attr[:name])
     end
 
+    # def self.search(params)
+    #     car = self.make.name
+    #     cars = car.where("name LIKE ?", "%#{params[:search]}%") if params[:search].present?
+    #       cars
+    # end
+
+    def self.search(params)  
+        where("lower(makes.name) LIKE :search OR lower(cars.color) LIKE :search", search: "%#{params.downcase}%").uniq   
+     end
+
     def make_and_color
         "#{self.make.try(:name)} - #{self.color}"
     end
@@ -32,7 +42,8 @@ class Car < ApplicationRecord
         "$#{display}"
     end
 
-    
+  
+
 end
 
 
